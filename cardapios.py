@@ -21,3 +21,27 @@ funcional = [
     {'number': 20, 'prato': 'Grelhadinho oriental com purê de batata salsa'},
     {'number': 21, 'prato': 'Estrogonofe de carne, batata salsa e espaguete de cenoura'},
 ]
+
+low_carb = [
+    {'number': 22, 'prato': 'Escondiddinho de couve flor com carne desfiada e linguiça blumenau'},
+    {'number': 23, 'prato': 'Salteados de legumes com carne'},
+    {'number': 24, 'prato': 'Estrogonofe de frago com arroz de brócolis e bacon'},
+    {'number': 25, 'prato': 'Lasanha de carne low'},
+    {'number': 26, 'prato': 'Frango ao curry low carb'},
+    {'number': 27, 'prato': 'Escondidinho de couve flor com frango'},
+    {'number': 28, 'prato': 'Espaguete de legumes com frango ao molho sugo'},
+    {'number': 29, 'prato': 'Panqueca de frango low carb, acompanha molho de tomate caseiro e queijo'},
+    {'number': 30, 'prato': 'Lasanha de frango low'},
+    {'number': 31, 'prato': 'Panqueca de carne lowcarb, acompanha molho de tomate caseiro e queijo'},
+]
+
+vegano = [
+    {'number': 32, 'prato': 'Talharim de espinafre ao molho de tomate cereja e manjericão'},
+    {'number': 33, 'prato': 'Espaguete de abobrinha com azeitona ao molho sugo'},
+    {'number': 34, 'prato': 'Nhoque de batata doce com salsinha'},
+    {'number': 35, 'prato': 'Mix de vegetais com especiarias'},
+    {'number': 36, 'prato': 'Risoto de quinoa com palmito e azeitonas'},
+    {'number': 37, 'prato': 'Abobrinha gratinada'},
+    {'number': 38, 'prato': 'Purê de mandioquinha com vegetais ao vapor'},
+]
+
