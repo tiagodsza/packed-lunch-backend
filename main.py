@@ -1,13 +1,17 @@
-from pedido import criar_pedido, quantidade_de_pratos, gerar_pedido
+from fastapi import FastAPI, Depends
+from starlette.status import HTTP_201_CREATED
 
-quantidade_de_pedidos = input('Insira a quantidade de pedidos:')
-listas_de_pedido = []
-for i in range(int(quantidade_de_pedidos)):
-    pedido_iput = input('Insira o número do pedido separado por vírgula:')
-    listas_de_pedido.append(pedido_iput.split(','))
-    print(listas_de_pedido)
+from app.database.repository import get_repository, Repository
+from app.domains.food.menu_request import CreateMenuRequest
+
+app = FastAPI()
+
+@app.post("/", status_code=HTTP_201_CREATED)
+def create_menu(
+        create_menu_request : CreateMenuRequest,
+        repository:Repository = Depends(get_repository),
+):
+    menu = create_menu_request.to_domain()
+    repository.insert(menu)
 
 
-pedidos = criar_pedido(listas_de_pedido)
-print("quantidade:", quantidade_de_pratos(pedidos))
-gerar_pedido(pedidos)
