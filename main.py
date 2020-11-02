@@ -1,17 +1,10 @@
-from fastapi import FastAPI, Depends
-from starlette.status import HTTP_201_CREATED
+import uvicorn
 
-from app.database.repository import get_repository, Repository
-from app.domains.food.menu_request import CreateMenuRequest
-
-app = FastAPI()
-
-@app.post("/", status_code=HTTP_201_CREATED)
-def create_menu(
-        create_menu_request : CreateMenuRequest,
-        repository:Repository = Depends(get_repository),
-):
-    menu = create_menu_request.to_domain()
-    repository.insert(menu)
-
-
+if __name__=='__main__':
+    uvicorn.run(
+        'app:app',
+        host='localhost',
+        port=3000,
+        log_level='info',
+        reload=True,
+    )

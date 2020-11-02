@@ -15,5 +15,3 @@ url_parameters_db = quote_plus(parameters)
 URL_DB = f'mssql+pyodbc:///?odbc_connect=%s' % url_parameters_db
 engine = create_engine(URL_DB)
 Session = sessionmaker(bind=engine)
-
-session =Session()

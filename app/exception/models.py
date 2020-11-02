@@ -1,9 +1,5 @@
+from starlette.exceptions import HTTPException
 from starlette.status import  HTTP_404_NOT_FOUND
-
-
-class HTTPException(Exception):
-    status_code: int
-    message: str
 
 
 class NotFoundException(HTTPException):
