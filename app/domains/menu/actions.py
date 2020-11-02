@@ -17,6 +17,6 @@ def update_menu(
     if not menu:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND)
     menu.update(create_menu_request)
-    repository.insert(menu)
+    repository.save(menu)
     response = MenuResponse.from_domain(menu)
     return response

@@ -9,13 +9,6 @@ from app.domains.menu.model import Menu
 
 router = APIRouter()
 
-@router.post('/', status_code=HTTP_201_CREATED)
-def create_menu(
-        create_menu_request: CreateMenuRequest,
-        repository: Repository = Depends(get_repository),
-):
-    menu = create_menu_request.to_domain()
-    repository.insert(menu)
 
 @router.get('/', status_code=HTTP_200_OK)
 def get(
@@ -34,10 +27,18 @@ def get_by_id(
         raise HTTPException(status_code=HTTP_404_NOT_FOUND)
     return response
 
+@router.post('/', status_code=HTTP_201_CREATED)
+def create_menu(
+        create_menu_request: CreateMenuRequest,
+        repository: Repository = Depends(get_repository),
+):
+    menu = create_menu_request.to_domain()
+    repository.save(menu)
+
 @router.put('/{id}')
-async def update(
+def update(
         id: int,
         request: CreateMenuRequest,
 ):
-    menu = update_menu(id, request)
-    return menu
+    response = update_menu(id, request)
+    return response
