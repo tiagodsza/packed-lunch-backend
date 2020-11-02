@@ -2,14 +2,10 @@ from fastapi import APIRouter, Depends
 from starlette.exceptions import HTTPException
 from starlette.status import HTTP_201_CREATED, HTTP_200_OK, HTTP_404_NOT_FOUND
 
-<<<<<<< HEAD
-from app.database.repository import  get_repository, Repository
-from app.routes.menu.menu_request import CreateMenuRequest
-=======
-from app import CreateMenuRequest, get_repository, Repository
->>>>>>> feature/create_update_menu
+from app.database.repository import Repository, get_repository
 from app.domains.menu.actions import update_menu
 from app.domains.menu.model import Menu
+from app.routes.menu.menu_request import CreateMenuRequest
 
 router = APIRouter()
 
@@ -31,7 +27,6 @@ def get_by_id(
         raise HTTPException(status_code=HTTP_404_NOT_FOUND)
     return response
 
-<<<<<<< HEAD
 @router.post('/', status_code=HTTP_201_CREATED)
 def create_menu(
         create_menu_request: CreateMenuRequest,
@@ -43,20 +38,7 @@ def create_menu(
 @router.put('/{id}')
 def update(
         id: int,
-        request: CreateMenuRequest,
-):
-    response = update_menu(id, request)
-    return response
-=======
-@router.put('/{id}')
-def update(
-        id: int,
         create_menu_request: CreateMenuRequest,
 ):
     response = update_menu(id, create_menu_request)
     return response
-
-
-
-
->>>>>>> feature/create_update_menu
