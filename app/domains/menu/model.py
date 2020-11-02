@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
 
+from app import CreateMenuRequest
 from app.database.config import Base
 from app.database.model import AbstractModelMixin
 
@@ -17,9 +18,17 @@ class Menu(Base, AbstractModelMixin):
 
     def update(
             self,
+<<<<<<< HEAD
             create_menu_request,
+=======
+            create_menu_request: CreateMenuRequest
+>>>>>>> feature/create_update_menu
     ):
         self.number = create_menu_request.number or self.number
         self.food = create_menu_request.food or self.food
         self.categorie = create_menu_request.categorie or self.categorie
+<<<<<<< HEAD
         self.restaurant = create_menu_request.restaurant or self.restaurant
+=======
+        self.restaurant = create_menu_request.restaurant or self.restaurant
+>>>>>>> feature/create_update_menu
