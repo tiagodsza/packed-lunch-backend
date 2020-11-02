@@ -14,3 +14,12 @@ class Menu(Base, AbstractModelMixin):
 
     def __init__(self, **kwargs):
         super(Menu, self).__init__(**kwargs)
+
+    def update(
+            self,
+            create_menu_request,
+    ):
+        self.number = create_menu_request.number or self.number
+        self.food = create_menu_request.food or self.food
+        self.categorie = create_menu_request.categorie or self.categorie
+        self.restaurant = create_menu_request.restaurant or self.restaurant

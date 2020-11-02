@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.database.repository import get_repository, Repository
-from app.domains.food.menu_request import CreateMenuRequest
 from app.routes import api_router
 
 app = FastAPI()

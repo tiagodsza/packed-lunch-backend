@@ -19,7 +19,7 @@ class Repository:
         response =  self._db.query(model).get(id)
         return response
 
-    def insert(self, model):
+    def save(self, model):
         self._db.add(model)
         self._db.commit()
 
