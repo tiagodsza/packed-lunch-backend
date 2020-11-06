@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
 
 [packages]
 pyodbc = "*"
@@ -12,7 +14,6 @@ sqlalchemy = "*"
 mssql = "*"
 fastapi = "*"
 uvicorn = "*"
-email-validator = "*"
 
 [requires]
 python_version = "3.8"

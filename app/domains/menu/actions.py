@@ -3,6 +3,7 @@ from starlette.status import HTTP_404_NOT_FOUND
 
 from app.database.repository import get_repository
 from app.domains.menu.model import Menu
+from app.exception.models import NotFoundException
 from app.routes.menu.menu_request import CreateMenuRequest
 from app.routes.menu.menu_response import MenuResponse
 
@@ -14,7 +15,7 @@ def update_menu(
     repository = next(get_repository())
     menu = repository.get_by_id(Menu, id)
     if not menu:
-        raise HTTPException(status_code=HTTP_404_NOT_FOUND)
+        raise NotFoundException('Menu not found!')
     menu.update(create_menu_request)
     repository.save(menu)
     response = MenuResponse.from_domain(menu)
@@ -25,7 +26,7 @@ def get_menu_by_id(id: int):
     repository = next(get_repository())
     response = repository.get_by_id(Menu, id)
     if not response:
-        raise HTTPException(status_code=HTTP_404_NOT_FOUND)
+        raise NotFoundException('Menu not found!')
     return response
 
 
