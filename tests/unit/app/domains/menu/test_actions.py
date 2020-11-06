@@ -72,15 +72,14 @@ class TestMenuActions(TestCase):
             self,
             next_mock,
     ):
-        #Arrange
+        # Arrange
         repository_mock = Mock()
         repository_mock.get_by_id.return_value = None
         next_mock.return_value = repository_mock
 
-
-        #Action
+        # Action
         with pytest.raises(NotFoundException) as ex:
             update_menu(5, 'create_menu_request')
 
-        #Asserts
+        # Asserts
         self.assertEqual(ex.value.detail, 'Menu not found!')
