@@ -5,8 +5,6 @@ from app.database.model import AbstractModelMixin
 
 
 class Menu(Base, AbstractModelMixin):
-    # __tablename__ = 'menu'
-
     number = Column(Integer, unique=True, nullable=False)
     food = Column(String(length=200), nullable=False)
     categorie = Column(String(), nullable=True)
