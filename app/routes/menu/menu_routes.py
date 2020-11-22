@@ -10,9 +10,8 @@ router = APIRouter()
 
 
 @router.get('/', status_code=HTTP_200_OK)
-def get(
-        repository: Repository = Depends(get_repository),
-):
+def get():
+    repository = get_repository()
     response = repository.get(Menu)
     return response
 
@@ -29,7 +28,8 @@ def get_by_id(
 def post(
         create_menu_request: CreateMenuRequest,
 ):
-    create_menu(create_menu_request)
+    response = create_menu(create_menu_request)
+    return response
 
 
 @router.put('/{id}')
@@ -37,4 +37,5 @@ def update(
         id: int,
         create_menu_request: CreateMenuRequest,
 ):
-    update_menu(id, create_menu_request)
+    response = update_menu(id, create_menu_request)
+    return response

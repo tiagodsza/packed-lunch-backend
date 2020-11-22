@@ -2,11 +2,12 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
+
 class MenuResponse(BaseModel):
     id: int
     created_at: datetime
     updated_at: datetime
-    deleted_at:datetime = None
+    deleted_at: datetime = None
     number: int
     food: str
     categorie: str

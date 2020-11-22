@@ -1,5 +1,5 @@
 import os
 
-DRIVER = os.getenv('DRIVER')
-SERVER = os.getenv('SERVER')
-DATABASE = os.getenv('DATABASE')
+DRIVER = os.getenv('DRIVER', '{SQL SERVER}')
+SERVER = os.getenv('SERVER', 'NT-04521')
+DATABASE = os.getenv('DATABASE', 'MARMITAS')

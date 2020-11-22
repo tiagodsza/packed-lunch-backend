@@ -24,10 +24,14 @@ class Repository:
         self._db.commit()
 
 
-def get_repository():
+def create_repository():
     try:
         repository = Repository()
         repository.set_db(Session())
         yield repository
     finally:
         repository.close()
+
+
+def get_repository():
+    return next(create_repository())
