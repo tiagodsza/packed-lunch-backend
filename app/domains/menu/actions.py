@@ -34,3 +34,13 @@ def create_menu(create_menu_request):
     repository.save(menu)
     response = MenuResponse.from_domain(menu)
     return response
+
+def delete_menu(id: int):
+    repository = get_repository()
+    menu = repository.get_by_id(Menu, id)
+    if not menu:
+        raise NotFoundException('Menu not found!')
+    menu.inactivate()
+    repository.save(menu)
+    response = MenuResponse.from_domain(menu)
+    return response
