@@ -8,6 +8,5 @@ import config
 
 Base = declarative_base()
 
-print(config.URL_DB)
 engine = create_engine(config.URL_DB)
 Session = sessionmaker(bind=engine)
