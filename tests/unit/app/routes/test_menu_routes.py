@@ -55,21 +55,21 @@ class TestMenuRoutes(TestCase):
             self,
             create_menu_mock
     ):
-        #Arrange
+        # Arrange
         create_menu_mock.return_value = 'response'
 
-        #Action
+        # Action
         response = client.post(
             '/menu/',
-            json= {
-                'number' :'1',
-                'food' :'T-bone',
-                'categorie' :'Meat',
-                'restaurant' :'Chef Meat',
+            json={
+                'number': '1',
+                'food': 'T-bone',
+                'categorie': 'Meat',
+                'restaurant': 'Chef Meat',
             },
         )
 
-        #Asserts
+        # Asserts
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json(), 'response')
         create_menu_mock_calls = create_menu_mock.mock_calls
@@ -80,10 +80,10 @@ class TestMenuRoutes(TestCase):
 
     @patch('app.routes.menu.menu_routes.update_menu')
     def test_update_menu(self, update_menu_mock):
-        #Arrange
+        # Arrange
         update_menu_mock.return_value = 'response'
 
-        #Action
+        # Action
         response = client.put(
             '/menu/1',
             json={
@@ -94,7 +94,7 @@ class TestMenuRoutes(TestCase):
             },
         )
 
-        #Asserts
+        # Asserts
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), 'response')
         update_menu_mock_calls = update_menu_mock.mock_calls
@@ -103,3 +103,19 @@ class TestMenuRoutes(TestCase):
             call(1, CreateMenuRequest(number=1, food='T-bone', categorie='Meat', restaurant='Chef Meat'))
         ])
 
+    @patch('app.routes.menu.menu_routes.delete_menu')
+    def test_delete_menu(self, delete_menu_mock):
+        # Arranges
+        delete_menu_mock.return_value = 'response'
+
+        # Action
+        response = client.delete('/menu/6')
+
+        # Asserts
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), 'response')
+        delete_menu_mock_calls = delete_menu_mock.mock_calls
+        self.assertEqual(len(delete_menu_mock_calls), 1)
+        delete_menu_mock.assert_has_calls([
+            call(6)
+        ])

@@ -13,7 +13,6 @@ class Repository:
 
     def get(self, model):
         response = self._db.query(model).filter(model.deleted_at == None)
-        print(response)
         return response.all()
 
     def get_by_id(self, model, id):
