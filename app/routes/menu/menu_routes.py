@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from starlette.status import HTTP_201_CREATED, HTTP_200_OK
 
-from app.database.repository import Repository, get_repository
+from app.database.repository import get_repository
 from app.domains.menu.actions import update_menu, get_menu_by_id, create_menu, delete_menu
 from app.domains.menu.model import Menu
 from app.routes.menu.menu_request import CreateMenuRequest
@@ -43,4 +43,5 @@ def update(
 
 @router.delete('/{id}', status_code=HTTP_200_OK)
 def delete(id: int):
-    delete_menu(id)
+    response = delete_menu(id)
+    return response

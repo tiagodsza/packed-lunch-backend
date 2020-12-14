@@ -53,20 +53,22 @@ class TestRepository(TestCase):
         db_mock = Mock()
         db_mock.query = Mock(return_value=response_mock)
         repository.set_db(db_mock)
+        model_mock = Mock()
 
         #Action
-        repository.get('model')
+        repository.get(model_mock)
 
         #Asserts
         db_mock_calls = db_mock.mock_calls
         self.assertEqual(len(db_mock_calls), 1)
         db_mock.assert_has_calls([
-            call.query('model')
+            call.query(model_mock)
         ])
         response_mock_calls = response_mock.mock_calls
-        self.assertEqual(len(response_mock_calls), 1)
+        self.assertEqual(len(response_mock_calls), 2)
         response_mock.assert_has_calls([
-            call.all()
+            call.filter(False),
+            call.filter().all()
         ])
 
     def test_get_by_id(self):
